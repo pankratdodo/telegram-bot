@@ -1,7 +1,8 @@
 import telebot
+import time
 from telebot import types
 
-bot = telebot.TeleBot('1203920016:AAFEDS0y6NQ_u_rPOxBVDVGfdiFv6TsTfaA')
+bot = telebot.TeleBot('TOKEN')
 
 
 @bot.message_handler(commands=['start'])
@@ -53,4 +54,11 @@ def other_key(chat_id):
     keyboard.add(types.InlineKeyboardButton(text='Уберите это', callback_data="button_return"))
     return keyboard
 
-bot.polling(none_stop=True)
+while True:
+    try:
+      bot.polling()    
+    except Exception as e:
+        print(e)
+        time.sleep(3)
+    print('lol')
+    time.sleep(3)
